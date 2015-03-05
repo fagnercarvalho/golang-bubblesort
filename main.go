@@ -18,9 +18,7 @@ func bubbleSort(numbers []int) []int {
 		swapped = false
 		for i := 1; i <= n-1; i++ {
 			if numbers[i-1] > numbers[i] {
-				auxNumber := numbers[i-1]
-				numbers[i-1] = numbers[i]
-				numbers[i] = auxNumber
+				numbers[i-1], numbers[i] = numbers[i], numbers[i-1]
 				swapped = true
 			}
 		}
@@ -31,9 +29,9 @@ func bubbleSort(numbers []int) []int {
 
 func convertToNumbers(parameters []string) []int {
 	var numbers []int
-	for _, v := range parameters {
-		number, _ := strconv.ParseInt(v, 0, 0)
-		numbers = append(numbers, int(number))
+	for _, parameter := range parameters {
+		number, _ := strconv.Atoi(parameter)
+		numbers = append(numbers, number)
 	}
 
 	return numbers
